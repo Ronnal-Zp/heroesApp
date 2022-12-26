@@ -1,0 +1,50 @@
+
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav #sidenav mode="push">
+        <mat-toolbar color="primary">
+            <span>Sidenav</span>
+            <button (click)="sidenav.toggle()" mat-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+          <a  routerLink="./list"
+              mat-list-item
+              (click)="sidenav.toggle()">
+            <mat-icon mat-list-icon>menu_open</mat-icon>
+            <span>Listado de Heroes</span>
+          </a>
+
+          <a  routerLink="./add"
+              mat-list-item
+              (click)="sidenav.toggle()">
+              <mat-icon mat-list-icon>add_task</mat-icon>
+              <span>Añadir Heroe</span>
+          </a>
+
+          <a  routerLink="./search"
+              mat-list-item
+              (click)="sidenav.toggle()">
+              <mat-icon mat-list-icon>person_search</mat-icon>
+              <span>Buscar Heroe</span>
+          </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-toolbar>
+        <button (click)="sidenav.toggle()" mat-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <div class="container-fluid p-4">
+      <router-outlet></router-outlet>
+    </div>
+    
+</mat-sidenav-container>
+
+
+
+

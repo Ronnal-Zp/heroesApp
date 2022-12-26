@@ -1,0 +1,30 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { HeroesRoutingModule } from './heroes-routing.module';
+import { MaterialModule } from '../material/material.module';
+
+
+import { AddHeroeComponent } from './pages/add-heroe/add-heroe.component';
+import { SearchHeroeComponent } from './pages/search-heroe/search-heroe.component';
+import { ShowHeroeComponent } from './pages/show-heroe/show-heroe.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ListHeroeComponent } from './pages/list-heroe/list-heroe.component';
+
+
+
+@NgModule({
+  declarations: [
+    AddHeroeComponent,
+    SearchHeroeComponent,
+    ShowHeroeComponent,
+    HomeComponent,
+    ListHeroeComponent
+  ],
+  imports: [
+    CommonModule,
+    HeroesRoutingModule,
+    MaterialModule
+  ]
+})
+export class HeroesModule { }
