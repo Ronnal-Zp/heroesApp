@@ -10,6 +10,7 @@ import { SearchHeroeComponent } from './pages/search-heroe/search-heroe.componen
 import { ShowHeroeComponent } from './pages/show-heroe/show-heroe.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListHeroeComponent } from './pages/list-heroe/list-heroe.component';
+import { HeroeCardComponent } from './components/heroe-card/heroe-card.component';
 
 
 
@@ -19,7 +20,8 @@ import { ListHeroeComponent } from './pages/list-heroe/list-heroe.component';
     SearchHeroeComponent,
     ShowHeroeComponent,
     HomeComponent,
-    ListHeroeComponent
+    ListHeroeComponent,
+    HeroeCardComponent
   ],
   imports: [
     CommonModule,
