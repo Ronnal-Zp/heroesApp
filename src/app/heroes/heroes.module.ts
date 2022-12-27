@@ -11,6 +11,7 @@ import { ShowHeroeComponent } from './pages/show-heroe/show-heroe.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListHeroeComponent } from './pages/list-heroe/list-heroe.component';
 import { HeroeCardComponent } from './components/heroe-card/heroe-card.component';
+import { ImgRoutePipe } from './pipes/img-route.pipe';
 
 
 
@@ -21,7 +22,8 @@ import { HeroeCardComponent } from './components/heroe-card/heroe-card.component
     ShowHeroeComponent,
     HomeComponent,
     ListHeroeComponent,
-    HeroeCardComponent
+    HeroeCardComponent,
+    ImgRoutePipe
   ],
   imports: [
     CommonModule,
