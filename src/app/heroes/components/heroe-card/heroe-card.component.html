@@ -4,7 +4,7 @@
         <mat-card-subtitle>{{ heroe.alter_ego }}</mat-card-subtitle>
     </mat-card-header>
 
-    <img style="height: 350px;" class="img-fit" mat-card-image [src]="heroe | imgRoute" alt="heroe.superhero">
+    <img style="height: 450px;"  mat-card-image [src]="heroe | imgRoute" alt="heroe.superhero">
 
     <mat-card-content class="mb-1">
         <h3>{{ heroe.publisher }}</h3>
@@ -13,7 +13,13 @@
     </mat-card-content>
 
     <mat-card-actions class="d-flex justify-content-between">
-        <button mat-raised-button color="primary">Leer más...</button>
-        <button mat-raised-button>Editar</button>
+        <button mat-raised-button color="primary"
+                [routerLink]="['/heroes', heroe.id]">
+            Leer más...
+        </button>
+        <button mat-raised-button
+                [routerLink]="['/heroes/edit', heroe.id]">
+            Editar
+        </button>
     </mat-card-actions>
 </mat-card>
