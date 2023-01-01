@@ -1,1 +1,31 @@
-<p>ver-heroe works!</p>
+<div *ngIf="!heroe; else showHeroe" class="w-100 h-100 d-flex justify-content-center align-items-center">
+    <mat-progress-spinner
+        class=""
+        color="primary"
+        mode="indeterminate">
+    </mat-progress-spinner>
+</div>
+
+<ng-template #showHeroe>
+    <div class="row pb-4">
+        <div class="col-12 col-md-4 mb-5 d-flex justify-content-center align-items-center">
+            <img style="height: 550px;" class="img-fluid rounded "  mat-card-image [src]="heroe | imgRoute" alt="heroe.superhero">
+        </div>
+        <div class="col-12 col-md-8 h-100 position-relative">
+            <h2>{{ heroe.publisher }}</h2>
+            <mat-divider></mat-divider>
+            <br>
+            <br>
+
+            <h3>Identidad secreta: {{ heroe.alter_ego }}</h3>
+            <p>Primera aparicion: {{ heroe.first_appearance }}</p>
+            <p>Interpretado por:</p>
+            <p><small>{{ heroe.characters }}</small></p>
+
+            <button (click)="back()" class="mt-5" mat-raised-button color="warn">Regresar</button>
+        </div>
+    </div>
+</ng-template>
+
+
+ 
