@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ListHeroeComponent } from './pages/list-heroe/list-heroe.component';
 import { HeroeCardComponent } from './components/heroe-card/heroe-card.component';
 import { ImgRoutePipe } from './pipes/img-route.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -28,7 +29,8 @@ import { ImgRoutePipe } from './pipes/img-route.pipe';
   imports: [
     CommonModule,
     HeroesRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
   ]
 })
 export class HeroesModule { }

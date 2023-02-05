@@ -31,4 +31,15 @@ export class HeroesService {
     return this.httpCliente.get<Heroe>(`${ this.baseURL }/heroes/${ id }`);
   }
 
+
+  /**
+   * 
+   * @param termino 
+   * @param limit 
+   * @returns Heroe[]
+   */
+  getSugerencia(termino: string | null, limit: number = 5): Observable<Heroe[]> {
+    return this.httpCliente.get<Heroe[]>(`${this.baseURL}/heroes?q=${termino}&limit=${limit}`)
+  }
+
 }
