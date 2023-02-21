@@ -1,1 +1,65 @@
-<p>agregar works!</p>
+<div class="container h-100">
+  <div class="row h-100">
+    <div class="col-12 col-md-6">
+
+      <div class="d-flex gap-3">
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Super Heroe</mat-label>
+          <input  type="text"
+                  required
+                  matInput>
+        </mat-form-field>
+
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Alter Ego</mat-label>
+          <input  type="text"
+                  required
+                  matInput>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Primera Aparicion</mat-label>
+          <input  type="text"
+                  required
+                  matInput>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Personajes</mat-label>
+          <input  type="text"
+                  required
+                  matInput>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Creador</mat-label>
+          <mat-select>
+            <mat-option>Dc comic</mat-option>
+            <mat-option>Marvel</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field [style.width.%]="100">
+          <mat-label>Foto URl</mat-label>
+          <input  type="url"
+                  required
+                  matInput>
+        </mat-form-field>
+      </div>
+
+      <button class="w-100" mat-stroked-button color="accent">Accent</button>
+    </div>
+
+    <div class="col-12 col-md-6">
+      IMAGEN
+    </div>
+  </div>
+</div>
