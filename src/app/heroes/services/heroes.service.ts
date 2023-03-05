@@ -52,4 +52,13 @@ export class HeroesService {
     return this.httpCliente.post<Heroe>(`${ this.baseURL }/heroes`, heroe)
   }
 
+  /**
+   * 
+   * @param Heroe 
+   * @returns Heroe
+   */
+  updateHeroe(heroe: Heroe): Observable<Heroe> {
+    return this.httpCliente.put<Heroe>(`${ this.baseURL }/heroes/${heroe.id}`, heroe);
+  }
+
 }

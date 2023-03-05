@@ -1,5 +1,10 @@
 <div class="container h-100">
   <div class="row h-100">
+
+    <h2 class="text-center text-uppercase"> 
+      {{ defaultHeroe.id ? 'Actualizar Heroe' : 'Nuevo Heroe' }} 
+    </h2>
+
     <div class="col-12 col-md-6">
 
       <div class="d-flex gap-3">
@@ -58,7 +63,7 @@
         </mat-form-field>
       </div>
 
-      <button (click)="saveHeroe()" class="w-100" mat-stroked-button color="accent">Accent</button>
+      <button (click)="saveHeroe()" class="w-100" mat-stroked-button color="accent"> Guardar </button>
     </div>
 
     <div class="col-12 col-md-6">
