@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { switchMap, of } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { HeroesService } from '../../services/heroes.service';
 import { Heroe, Publisher } from '../../../shared/interfaces/general.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmComponent } from '../../components/confirm/confirm.component';
 
 @Component({
   selector: 'app-agregar',
@@ -26,6 +29,8 @@ export class AddHeroeComponent implements OnInit {
     private heroesService: HeroesService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
   ) { }
 
 
@@ -37,7 +42,7 @@ export class AddHeroeComponent implements OnInit {
           switchMap( ({id}) => this.heroesService.getHeroeById( id ) )
         )
         .subscribe( heroe => {
-          this.defaultHeroe = heroe
+          this.defaultHeroe = { ...heroe }
         })
     }    
 
@@ -61,14 +66,16 @@ export class AddHeroeComponent implements OnInit {
 
       this.heroesService.updateHeroe( this.defaultHeroe )
         .subscribe( heroe => {
-          this.defaultHeroe = heroe
+          this.defaultHeroe = { ...heroe };
+          this.openSnackBar('😎 !Heroe actualizado¡');
         });
 
     } else {
 
       this.heroesService.addHeroe( this.defaultHeroe )
         .subscribe( heroe => {
-          this.defaultHeroe = heroe
+          this.defaultHeroe = { ...heroe }
+          this.openSnackBar('💥 ¡Heroe creado!')
           this.router.navigate(['/heroes/edit', `${heroe.id}`]);
         })
 
@@ -77,11 +84,29 @@ export class AddHeroeComponent implements OnInit {
 
 
   deleteHeroe() {
-    this.heroesService.deleteHeroe( this.defaultHeroe.id! )
-      .subscribe( res => {
-        this.router.navigate(['/heroes'])
-      })
+
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: "400px",
+      data: { ...this.defaultHeroe }
+    });
+
+    dialogRef.afterClosed()
+      .pipe(
+        switchMap( (confirm) => {
+            if(confirm) return this.heroesService.deleteHeroe( this.defaultHeroe.id! )
+            else return of(null);
+        })
+      )
+      .subscribe()
   } 
 
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'OK', {
+      duration: 2000,
+      panelClass: 'text-success',
+
+    })
+  }
     
 }

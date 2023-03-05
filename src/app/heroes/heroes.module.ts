@@ -13,6 +13,7 @@ import { ListHeroeComponent } from './pages/list-heroe/list-heroe.component';
 import { HeroeCardComponent } from './components/heroe-card/heroe-card.component';
 import { ImgRoutePipe } from './pipes/img-route.pipe';
 import { FormsModule } from '@angular/forms';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 
 
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     ListHeroeComponent,
     HeroeCardComponent,
-    ImgRoutePipe
+    ImgRoutePipe,
+    ConfirmComponent
   ],
   imports: [
     CommonModule,
