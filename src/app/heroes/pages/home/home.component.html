@@ -31,9 +31,17 @@
     </mat-sidenav>
 
     <mat-toolbar>
-        <button (click)="sidenav.toggle()" mat-button>
-            <mat-icon>menu</mat-icon>
-        </button>
+        <div class="container d-flex justify-content-between">
+            <button (click)="sidenav.toggle()" mat-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+    
+            <button (click)="logout()"
+                    mat-raised-button 
+                    color="warn">
+                Logout
+            </button>
+        </div>
     </mat-toolbar>
 
     <div class="container-fluid p-4 w-100 h-85">
