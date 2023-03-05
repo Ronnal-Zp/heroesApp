@@ -29,13 +29,17 @@ export class AddHeroeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(
-        switchMap( ({id}) => this.heroesService.getHeroeById( id ) )
-      )
-      .subscribe(heroe => {
-        this.defaultHeroe = heroe
-      })
+
+    if (this.router.url.includes('edit')) {
+      this.activatedRoute.params
+        .pipe(
+          switchMap( ({id}) => this.heroesService.getHeroeById( id ) )
+        )
+        .subscribe(heroe => {
+          this.defaultHeroe = heroe
+        })
+    }    
+    
   }
 
 
@@ -45,6 +49,12 @@ export class AddHeroeComponent implements OnInit {
         !(this.defaultHeroe.first_appearance.trim().length > 0) ) {
       return;
     }
+
+
+    if (this.defaultHeroe.alt_img?.length == 0) {
+      this.defaultHeroe.alt_img = "assets/no-image.png";
+    }
+
 
     if( this.defaultHeroe.id ) {
 

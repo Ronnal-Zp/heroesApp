@@ -9,14 +9,14 @@ export class ImgRoutePipe implements PipeTransform {
   transform(heroe: Heroe): string {
     
     if(heroe.id?.includes('marvel') || heroe.id?.includes('dc')) {
-      return `../../../../assets/heroes/${ heroe.id }.jpg`
+      return `assets/heroes/${ heroe.id }.jpg`
     } 
 
     if(heroe.alt_img) {
       return heroe.alt_img;
     }
 
-    return "../../../../assets/no-image.png";
+    return "assets/no-image.png";
   }
 
 }
