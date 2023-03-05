@@ -42,4 +42,14 @@ export class HeroesService {
     return this.httpCliente.get<Heroe[]>(`${this.baseURL}/heroes?q=${termino}&limit=${limit}`)
   }
 
+
+  /**
+   * 
+   * @param Heroe 
+   * @returns Heroe
+   */
+  addHeroe(heroe: Heroe): Observable<Heroe> {
+    return this.httpCliente.post<Heroe>(`${ this.baseURL }/heroes`, heroe)
+  }
+
 }

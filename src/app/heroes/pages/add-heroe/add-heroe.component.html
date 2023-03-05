@@ -6,6 +6,7 @@
         <mat-form-field [style.width.%]="100">
           <mat-label>Super Heroe</mat-label>
           <input  type="text"
+                  [(ngModel)]="defaultHeroe.superhero"
                   required
                   matInput>
         </mat-form-field>
@@ -13,7 +14,7 @@
         <mat-form-field [style.width.%]="100">
           <mat-label>Alter Ego</mat-label>
           <input  type="text"
-                  required
+                  [(ngModel)]="defaultHeroe.alter_ego"
                   matInput>
         </mat-form-field>
       </div>
@@ -22,6 +23,7 @@
         <mat-form-field [style.width.%]="100">
           <mat-label>Primera Aparicion</mat-label>
           <input  type="text"
+                  [(ngModel)]="defaultHeroe.first_appearance"
                   required
                   matInput>
         </mat-form-field>
@@ -31,7 +33,7 @@
         <mat-form-field [style.width.%]="100">
           <mat-label>Personajes</mat-label>
           <input  type="text"
-                  required
+                  [(ngModel)]="defaultHeroe.characters"
                   matInput>
         </mat-form-field>
       </div>
@@ -39,9 +41,10 @@
       <div>
         <mat-form-field [style.width.%]="100">
           <mat-label>Creador</mat-label>
-          <mat-select>
-            <mat-option>Dc comic</mat-option>
-            <mat-option>Marvel</mat-option>
+          <mat-select [(ngModel)]="defaultHeroe.publisher"
+                      required>
+            <mat-option [value]="'DC Comics'">Dc comic</mat-option>
+            <mat-option [value]="'Marvel Comics'">Marvel</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -50,16 +53,20 @@
         <mat-form-field [style.width.%]="100">
           <mat-label>Foto URl</mat-label>
           <input  type="url"
-                  required
+                  [(ngModel)]="defaultHeroe.alt_img"
                   matInput>
         </mat-form-field>
       </div>
 
-      <button class="w-100" mat-stroked-button color="accent">Accent</button>
+      <button (click)="saveHeroe()" class="w-100" mat-stroked-button color="accent">Accent</button>
     </div>
 
     <div class="col-12 col-md-6">
-      IMAGEN
+      <ng-container *ngIf="defaultHeroe.alt_img">
+        
+        <img [src]="defaultHeroe.alt_img" class="rounded d-block mx-auto mt-5 mt-md-0" alt="defaultHeroe.superhero" width="300px">
+      
+      </ng-container>
     </div>
   </div>
 </div>
