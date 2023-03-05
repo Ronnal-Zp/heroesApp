@@ -28,6 +28,7 @@ export class AddHeroeComponent implements OnInit {
     private router: Router,
   ) { }
 
+
   ngOnInit(): void {
 
     if (this.router.url.includes('edit')) {
@@ -35,11 +36,11 @@ export class AddHeroeComponent implements OnInit {
         .pipe(
           switchMap( ({id}) => this.heroesService.getHeroeById( id ) )
         )
-        .subscribe(heroe => {
+        .subscribe( heroe => {
           this.defaultHeroe = heroe
         })
     }    
-    
+
   }
 
 
@@ -59,20 +60,28 @@ export class AddHeroeComponent implements OnInit {
     if( this.defaultHeroe.id ) {
 
       this.heroesService.updateHeroe( this.defaultHeroe )
-        .subscribe(heroe => {
+        .subscribe( heroe => {
           this.defaultHeroe = heroe
         });
 
     } else {
 
       this.heroesService.addHeroe( this.defaultHeroe )
-        .subscribe(heroe => {
+        .subscribe( heroe => {
           this.defaultHeroe = heroe
           this.router.navigate(['/heroes/edit', `${heroe.id}`]);
         })
 
     }
   }
+
+
+  deleteHeroe() {
+    this.heroesService.deleteHeroe( this.defaultHeroe.id! )
+      .subscribe( res => {
+        this.router.navigate(['/heroes'])
+      })
+  } 
 
     
 }
