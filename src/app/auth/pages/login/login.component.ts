@@ -10,6 +10,8 @@ import { User } from '../../../shared/interfaces/general.interface';
 })
 export class LoginComponent {
 
+  username: string = '';
+
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -17,12 +19,20 @@ export class LoginComponent {
 
 
   login() {
-    this.authService.login('1')
+    this.authService.loginByUsername(this.username)
       .subscribe( user => {
-        if(user.id) {
+        console.log(user);
+        console.log(user[0].id);
+        if(user[0].id) {
+          console.log(true);
           this.router.navigate(['./heroes'])
         }
       })
+  }
+
+
+  register() {
+    this.router.navigate(['./auth/register'])
   }
 
 }

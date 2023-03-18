@@ -1,9 +1,25 @@
 
 
-<div class="container h-100">
-    <div class="row">
-        <div class="col-12 col-md-6">
-           <button (click)="login()" mat-raised-button >Login</button>
+<div class="h-100 d-flex justify-content-center align-items-center bg-login">
+
+    <div class="container-login d-flex flex-column">
+        <div class="text-center mb-4">
+          <img class="rounded" width="90px" src="./../../../../assets/no-image.png" alt="profile">
+        </div>
+
+        <div class="mb-5 col-12">
+          <label for="login" class="col-12 col-form-label text-light">Ingrese su nombre de usuario</label>
+          <input class="form-control " type="text" id="login" [(ngModel)]="username">
+        </div>
+
+        <div class="col-12 text-center mb-2">
+          <button (click)="login()" mat-raised-button >Iniciar Sesion</button>
+        </div>
+
+        <div class="mb-2 text-light text-center">- O -</div>
+
+        <div class="col-12 text-center mb-2">
+          <button (click)="register()" mat-raised-button color="accent">Registrarse</button>
         </div>
     </div>
 </div>

@@ -38,6 +38,23 @@ export class AuthService {
                 );
   }
 
+
+  /**
+   *
+   * @param username
+   * @returns User[]
+   */
+  loginByUsername(username: string): Observable<User[]> {
+    let queryParams = '?usuario=' + username;
+
+    return this.httpClient.get<User[]>(`${ this._baseUrl }/usuarios${ queryParams }`)
+                  .pipe(
+                    tap(user => this._userAuth = user[0]),
+                    tap(user => localStorage.setItem('id', String(user[0]?.id) ))
+                  );
+  }
+
+
   /**
    *
    * @return void
@@ -45,6 +62,17 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.router.navigate(['./auth']);
+  }
+
+
+  /**
+   *
+   * @param usuario
+   * @param email
+   * @returns User
+   */
+  register(usuario: string, email: string): Observable<User> {
+    return this.httpClient.post<User>(`${this._baseUrl}/usuarios`, { usuario, email })
   }
 
 

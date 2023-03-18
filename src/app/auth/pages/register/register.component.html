@@ -1,1 +1,31 @@
-<p>register works!</p>
+
+
+<div class="h-100 d-flex justify-content-center align-items-center bg-login">
+
+  <div class="container-login d-flex flex-column">
+      <div class="text-center mb-4">
+        <img class="rounded" width="90px" src="./../../../../assets/no-image.png" alt="profile">
+      </div>
+
+      <div class="mb-2 col-12">
+        <label for="register-usuario" class="col-12 col-form-label text-light">Nombre de usuario</label>
+        <input class="form-control " type="text" id="register" [(ngModel)]="usuario">
+      </div>
+
+      <div class="mb-5 col-12">
+        <label for="register-email" class="col-12 col-form-label text-light">Email</label>
+        <input class="form-control " type="text" id="register-email" [(ngModel)]="email">
+      </div>
+
+      <div class="col-12 text-center mb-2">
+        <button (click)="register()" mat-raised-button >Registrar</button>
+      </div>
+
+      <div *ngIf="isRegister" class="col-12 text-center mb-2">
+        <div class="alert alert-danger" role="alert">
+          Este usuario ya ha sido registrado
+        </div>
+      </div>
+
+  </div>
+</div>
