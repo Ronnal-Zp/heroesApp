@@ -21,6 +21,19 @@
         <div class="col-12 text-center mb-2">
           <button (click)="register()" mat-raised-button color="accent">Registrarse</button>
         </div>
+
+        <div *ngIf="voidError" class="col-12 text-center mt-3">
+          <div class="alert alert-danger" role="alert">
+            ¡Ingresa un nombre de usuario!
+          </div>
+        </div>
+
+        <div *ngIf="usernameError" class="col-12 text-center mt-3">
+          <div class="alert alert-danger" role="alert">
+            ¡No existe este nombre de usuario!
+          </div>
+        </div>
+
     </div>
 </div>
 

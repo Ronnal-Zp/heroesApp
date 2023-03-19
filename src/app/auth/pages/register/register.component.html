@@ -1,29 +1,39 @@
 
 
-<div class="h-100 d-flex justify-content-center align-items-center bg-login">
+<div class="h-100 position-relative d-flex justify-content-center align-items-center bg-login">
 
-  <div class="container-login d-flex flex-column">
+  <div class="position-absolute back-login">
+    <button (click)="regresar()" mat-raised-button color="accent">Volver</button>
+  </div>
+
+  <div class="container-login p-2 d-flex flex-column">
       <div class="text-center mb-4">
         <img class="rounded" width="90px" src="./../../../../assets/no-image.png" alt="profile">
       </div>
 
       <div class="mb-2 col-12">
         <label for="register-usuario" class="col-12 col-form-label text-light">Nombre de usuario</label>
-        <input class="form-control " type="text" id="register" [(ngModel)]="usuario">
+        <input class="form-control " type="text" id="register" [(ngModel)]="usuario" required>
       </div>
 
       <div class="mb-5 col-12">
         <label for="register-email" class="col-12 col-form-label text-light">Email</label>
-        <input class="form-control " type="text" id="register-email" [(ngModel)]="email">
+        <input class="form-control " type="email" id="register-email" [(ngModel)]="email" required>
       </div>
 
       <div class="col-12 text-center mb-2">
-        <button (click)="register()" mat-raised-button >Registrar</button>
+        <button (click)="validRegister()" mat-raised-button >Registrar</button>
       </div>
 
-      <div *ngIf="isRegister" class="col-12 text-center mb-2">
+      <div *ngIf="!isRegister" class="col-12 text-center mt-3">
         <div class="alert alert-danger" role="alert">
-          Este usuario ya ha sido registrado
+          ¡Este usuario ya ha sido registrado!
+        </div>
+      </div>
+
+      <div *ngIf="error" class="col-12 text-center mt-3">
+        <div class="alert alert-danger" role="alert">
+          ¡Faltan campos por llenar!
         </div>
       </div>
 

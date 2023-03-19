@@ -11,6 +11,8 @@ import { User } from '../../../shared/interfaces/general.interface';
 export class LoginComponent {
 
   username: string = '';
+  voidError: boolean = false;
+  usernameError: boolean = false;
 
   constructor(
     private router: Router,
@@ -19,13 +21,21 @@ export class LoginComponent {
 
 
   login() {
+
+    if(this.username.length == 0) {
+      this.voidError = true
+      return;
+    }
+
+    this.voidError = false;
+
     this.authService.loginByUsername(this.username)
       .subscribe( user => {
-        console.log(user);
-        console.log(user[0].id);
-        if(user[0].id) {
-          console.log(true);
+        if(user.length > 0) {
+          this.usernameError = false;
           this.router.navigate(['./heroes'])
+        } else {
+          this.usernameError = true;
         }
       })
   }

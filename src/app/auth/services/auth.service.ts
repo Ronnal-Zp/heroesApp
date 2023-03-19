@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   /**
-   *
+   * Loguearse por id
    * @param id
    * @returns User
    */
@@ -40,7 +40,7 @@ export class AuthService {
 
 
   /**
-   *
+   *  Logeuarse por username
    * @param username
    * @returns User[]
    */
@@ -54,9 +54,9 @@ export class AuthService {
                   );
   }
 
-
+  
   /**
-   *
+   * Logout
    * @return void
    */
   logout() {
@@ -66,18 +66,21 @@ export class AuthService {
 
 
   /**
-   *
+   * Registrar usuario
    * @param usuario
    * @param email
    * @returns User
    */
   register(usuario: string, email: string): Observable<User> {
     return this.httpClient.post<User>(`${this._baseUrl}/usuarios`, { usuario, email })
+                  .pipe( 
+                    tap( user => localStorage.setItem('id', String(user.id)) )
+                  )
   }
 
 
   /**
-   *
+   * Validar si esta logueado el usuario
    * @returns boolean
    */
   isLogged(): Observable<boolean> {
