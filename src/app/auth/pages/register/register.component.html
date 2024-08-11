@@ -1,1 +1,32 @@
-<p>register works!</p>
+<div class="flex flex-column">
+  <span class="text-lg mb-4">Registro</span>
+
+  <mat-form-field>
+    <mat-label>Usuario</mat-label>
+    <input type="text" matInput>
+    <mat-icon matSuffix>account_circle</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nombre completo</mat-label>
+    <input type="text" matInput>
+    <mat-icon matSuffix>assignment_ind</mat-icon>
+  </mat-form-field>
+
+
+
+  <mat-form-field>
+    <mat-label>Contraseña</mat-label>
+    <input type="password" matInput>
+    <mat-icon matSuffix>lock</mat-icon>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary">
+    Registrarse
+  </button>
+
+  <div class="flex justify-content-end mt-5">
+    <a routerLink="/auth/login">Ya tengo cuenta.</a>
+  </div>
+
+</div>
