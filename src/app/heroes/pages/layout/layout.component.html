@@ -1,3 +1,40 @@
-<p>layout works!</p>
-<router-outlet></router-outlet>
+
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }" class="p-2">
+    <h2 class="text-center">Menú</h2>
+
+    <mat-nav-list>
+      <mat-list-item *ngFor="let item of sideBarItems"
+                     [routerLink]="item.url"
+                     (click)="sidenav.toggle()">
+
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        {{ item.label }}
+      </mat-list-item>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="accent">
+      <button (click)="sidenav.toggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Heroes</span>
+
+      <span class="spacer"></span>
+
+      <button mat-button>
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar Sesion</span>
+      </button>
+    </mat-toolbar>
+
+    <div class="p-2">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
 
