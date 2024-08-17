@@ -16,7 +16,7 @@ export class LayoutComponent {
     {
       label: 'Añadir',
       icon: 'add_circle',
-      url: './list'
+      url: './new'
     },
     {
       label: 'Buscar',

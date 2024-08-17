@@ -31,4 +31,9 @@ export class HeroeComponent implements OnInit {
     })
   }
 
+
+  goBack(): void {
+    this.router.navigateByUrl('heroes/list')
+  }
+
 }
