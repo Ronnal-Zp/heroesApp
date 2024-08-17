@@ -23,14 +23,16 @@
   <mat-divider></mat-divider>
 
   <mat-card-actions class="py-2">
-    <button mat-flat-button color="accent">
+    <button [routerLink]="['/heroes/edit', heroe.id]"
+            mat-flat-button color="accent">
       <mat-icon fontIcon="edit"></mat-icon>
       Editar
     </button>
 
     <span class="spacer"></span>
 
-    <button mat-button color="warn">
+    <button [routerLink]="['/heroes', heroe.id]"
+            mat-button color="warn">
       Más...
     </button>
   </mat-card-actions>
