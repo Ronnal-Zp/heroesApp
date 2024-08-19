@@ -24,4 +24,12 @@ export class HeroesService {
       );
   }
 
+  searchByTerm(term: string, limit = 6) {
+    console.log({term})
+    return this.httpClient.get<Heroe[]>(`${ this.baseUrl }/heroes?q=${term}&_limit=${limit}`)
+      .pipe(
+        catchError(err => of([]))
+      );
+  }
+
 }
