@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>¿Estas seguro de eliminar este heroe?</h2>
+<mat-dialog-content>
+  Esta accion es irreversible.
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="onNoClick()">No</button>
+  <span class="spacer"></span>
+  <button mat-button mat-dialog-close cdkFocusInitial color="accent" (click)="onConfirm()">Ok</button>
+</mat-dialog-actions>
