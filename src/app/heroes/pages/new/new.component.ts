@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Heroe, Publisher } from '../../interfaces/heroe.interface';
 import { HeroesService } from '../../services/heroes.service';
@@ -32,7 +33,8 @@ export class NewComponent implements OnInit {
   constructor(
     private heroesService: HeroesService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private matSnackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -62,14 +64,22 @@ export class NewComponent implements OnInit {
     if(this.currentHero.id) {
       this.heroesService.updateHero(this.currentHero)
         .subscribe(heroe => {
-          console.log(heroe);
+          this.showSnackBar('¡Heroe actualizado!');
         })
     } else {
       this.heroesService.addHero(this.currentHero)
         .subscribe(heroe => {
-          console.log(heroe);
+          this.showSnackBar('¡Heroe creado!');
+          this.router.navigate(['heroes/edit', heroe.id])
         })
     }
   }
+
+  public showSnackBar(message: string) {
+    this.matSnackBar.open(message, 'Ok', {
+      duration: 2500
+    })
+  }
+
 
 }
