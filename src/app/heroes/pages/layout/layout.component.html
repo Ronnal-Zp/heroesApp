@@ -24,8 +24,9 @@
       <span>Heroes</span>
 
       <span class="spacer"></span>
+      <span>{{ user?.email }}</span>
 
-      <button mat-button>
+      <button (click)="logout()" mat-button>
         <mat-icon>logout</mat-icon>
         <span>Cerrar Sesion</span>
       </button>
