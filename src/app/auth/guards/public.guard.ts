@@ -1,25 +1,18 @@
 import {
-  ActivatedRouteSnapshot,
   CanActivateFn,
   CanMatchFn,
-  Router,
   Route,
-  RouterStateSnapshot,
+  Router,
   UrlSegment
 } from '@angular/router';
 
 import { inject } from '@angular/core';
+import { map, Observable, tap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { Observable, tap } from 'rxjs';
 
-
-export const CanActivate: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
+export const CanActivate: CanActivateFn = (route, state) => {
   return checkAuth();
 };
-
 
 export const CanMatch: CanMatchFn = (
   route: Route,
@@ -28,19 +21,23 @@ export const CanMatch: CanMatchFn = (
   return checkAuth();
 }
 
+
+
 const checkAuth = (): Observable<boolean> => {
   const authService = inject(AuthService);
   const router = inject(Router);
 
   return authService.checkAuthentication()
     .pipe(
-      tap(isAuth => console.log('auth guard', isAuth)),
+      tap(isAuth => console.log('public guard', isAuth)),
       tap(isAuth => {
-        if(!isAuth) router.navigate(['auth/login'])
-      })
+        if(isAuth) router.navigate(['heroes/list'])
+      }),
+      map(isAuth => !isAuth) // si no esta autenticado, debe permitir pasar
     )
 }
 
-export const AuthGuard = {
+
+export const PublicGuard = {
   CanActivate, CanMatch
 }
